@@ -1,0 +1,218 @@
+#include <iostream>
+
+#include <string>
+
+using namespace std;
+
+ 
+
+// Class Vehicle contains the methods
+
+// InputWeight(), InputTopSpeed(), InputDrivenKM(), which are
+
+// used to read the variable values of Vehicle class in the inheriting class.
+
+// In addition Vehicle class contains the method Drive(length in km),
+
+// that increments the kilometres driven by the vehicle.
+
+ 
+
+class Vehicle
+
+{
+
+  public:
+
+  int weight;
+
+  int top_speed;
+
+  long driven_km;
+
+  Vehicle(int weight, int top_speed, long driven_km);
+
+  void Drive(int journey);
+
+  int InputWeight();
+
+  int InputTopSpeed();
+
+  long InputDrivenKM();
+
+};
+
+ 
+
+// Class contains only one initializing method, where the characteristics of Vehicle are
+
+// relayed as parameters right after creating the object.
+
+ 
+
+Vehicle::Vehicle(int Aw, int Ats, long Akm)
+
+{
+
+  weight = Aw;
+
+  top_speed = Ats;
+
+  driven_km = Akm;
+
+}
+
+ 
+
+void Vehicle::Drive(int journey)
+
+{
+
+  driven_km += journey;
+
+}
+
+ 
+
+int Vehicle::InputWeight()
+
+{
+
+  return weight;
+
+}
+
+ 
+
+int Vehicle::InputTopSpeed()
+
+{
+
+  return top_speed;
+
+}
+
+ 
+
+long Vehicle::InputDrivenKM()
+
+{
+
+  return driven_km;
+
+}
+
+class Car:public Vehicle{
+
+public:
+
+string brand;
+string model;
+string register_no;
+bool running;
+// Class methods
+Car(int Aw, int Ats, long Akm,string brd,string mdl,string rno,bool run):Vehicle(Aw, Ats, Akm)
+{
+brand=brd;
+model=mdl;
+register_no=rno;
+running=run;
+}
+
+void turn_on(){
+running=1;
+}
+void turn_off(){
+running=0;
+}
+void check_up(){
+
+
+	
+if(running==1){cout<<"car info:\n";
+	cout<<"brand:"<<brand<<"\n";
+    cout<<"model:"<<model<<"\n";
+	
+	cout<<"Kilometres:"<<driven_km<<"\n";
+    cout<<"weight:"<<weight<<"\n";
+    cout<<"Top speed:"<<top_speed<<"\n";
+    cout<<"License plate:"<<register_no<<"\n";
+cout<<"car is running.";
+}
+else{cout<<"car info:\n";
+	cout<<"brand:"<<brand<<"\n";
+    cout<<"model:"<<model<<"\n";
+	
+	cout<<"Kilometres:"<<driven_km<<"\n";
+    cout<<"weight:"<<weight<<"\n";
+    cout<<"Top speed:"<<top_speed<<"\n";
+    cout<<"License plate:"<<register_no<<"\n";
+cout<<"car is not running."<<endl;
+}
+}
+};
+int main()
+
+{
+
+  int weight, speed;
+
+  long km;
+
+  string brand, model, license;
+
+ 
+
+  // ask information about car
+
+  cout << "Input car brand: ";
+
+  cin >> brand;
+
+ 
+
+  cout << "Input car model: ";
+
+  cin >> model;
+
+ 
+
+  cout << "Input car license plate number: ";
+
+  cin >> license;
+
+ 
+
+  cout << "Input car weight: ";
+
+  cin >> weight;
+
+ 
+
+  cout << "Input car top speed: ";
+
+  cin >> speed;
+
+ 
+
+  cout << "Input distance traveled by car: ";
+
+  cin >> km;
+
+  cout << endl;
+
+  Car carX(weight, speed, km, brand, model, license, 0);
+
+ 
+
+  carX.check_up();
+
+  carX.turn_on();
+
+  carX.Drive(95);
+
+  cout << endl;
+
+  carX.check_up();
+
+}
